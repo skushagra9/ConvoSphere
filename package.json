@@ -2,6 +2,7 @@
   "name": "convosphere",
   "private": true,
   "scripts": {
+    "postinstall": "prisma generate --schema=./packages/prisma/prisma/schema.prisma",
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
