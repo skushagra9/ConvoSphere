@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -11,19 +10,28 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Myavatar } from "./Avatar";
 import { signOut } from "next-auth/react";
+import { ReactNode } from "react";
 
 interface DropdownMenuDemouserProps {
   email: string | null;
   name: string | null;
+  children: ReactNode;
 }
 
-export const DropdownMenuDemouser: React.FC<DropdownMenuDemouserProps> = ({ email, name }) => {
+export const DropdownMenuDemouser: React.FC<DropdownMenuDemouserProps> = ({
+  children,
+  email,
+  name,
+}) => {
   return (
     <div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="ghost" className="relative ml-3 h-8 w-8 rounded-full">
-            <Myavatar></Myavatar>
+          <Button
+            variant="ghost"
+            className="relative ml-3 h-8 w-8 rounded-full"
+          >
+            {children}
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="w-56" align="end" forceMount>
@@ -43,4 +51,4 @@ export const DropdownMenuDemouser: React.FC<DropdownMenuDemouserProps> = ({ emai
       </DropdownMenu>
     </div>
   );
-}
+};

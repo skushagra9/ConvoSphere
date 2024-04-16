@@ -1,9 +1,7 @@
-import React from 'react'
-import { Avatar, AvatarImage } from '../ui/avatar'
-import { UserData } from '@/app/data';
-import { Info, Phone, Video } from 'lucide-react';
-import Link from 'next/link';
-import { Myavatar } from '../Avatar';
+import React from "react";
+import { Info, Phone, Video } from "lucide-react";
+import Link from "next/link";
+import { Myavatar } from "../Avatar";
 export const TopbarIcons = [{ icon: Info }];
 
 export default function ChatTopbar({ name }: { name: string }) {
@@ -17,16 +15,13 @@ export default function ChatTopbar({ name }: { name: string }) {
         </div>
       </div>
 
-      <div className='flex flex-row gap-x-3'>
+      <div className="flex flex-row gap-x-3">
         {TopbarIcons.map((icon, index) => (
-          <Link
-            key={index}
-            href="#"
-          >
+          <Link key={index} href="#">
             <icon.icon size={20} className="text-muted-foreground" />
           </Link>
         ))}
       </div>
     </div>
-  )
+  );
 }

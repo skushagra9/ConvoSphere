@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { Button } from "@/components/ui/button";
 import { useRouter, usePathname } from "next/navigation";
 import { GitHubLogoIcon, SunIcon, MoonIcon } from "@radix-ui/react-icons";
@@ -6,20 +6,24 @@ import { useTheme } from "next-themes";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { DropdownMenuDemouser } from "./Dropdown";
+import { Myavatar } from "./Avatar";
 
 export function Navbar() {
   const { setTheme, theme } = useTheme();
   const router = useRouter();
   const { data: session } = useSession();
-  const path = usePathname()
+  const path = usePathname();
 
   if (path === "/login" || path === "/register") {
-    return null
+    return null;
   }
 
   return (
     <div className="flex flex-row mx-auto w-full md:w-2/3 justify-between items-center pt-2 md:pt-4 px-4">
-      <Link href={"/"} className="flex flex-row justify-center md:justify-start font-semibold tracking-tighter text-lg">
+      <Link
+        href={"/"}
+        className="flex flex-row justify-center md:justify-start font-semibold tracking-tighter text-lg"
+      >
         ConvoSphere
       </Link>
       <div className="flex flex-row items-center md:justify-end">
@@ -39,6 +43,7 @@ export function Navbar() {
           <DropdownMenuDemouser
             email={session.user?.email || null}
             name={session.user?.name || null}
+            children={<Myavatar />}
           />
         ) : (
           <Button
@@ -50,7 +55,6 @@ export function Navbar() {
             Sign In
           </Button>
         )}
-
       </div>
     </div>
   );
